@@ -58,7 +58,7 @@ namespace e8086
                 var input = FindName(reg.Name);
                 var inputChild = input as TextBox;
 
-                var output = FindName("Result" + reg.Name);
+                var output = FindName(reg.Name + "r");
                 var outputChild = output as TextBlock;
 
                 if (inputChild != null && !string.IsNullOrWhiteSpace(inputChild.Text))
@@ -106,7 +106,7 @@ namespace e8086
 
             if (singleReg != null)
             {
-                var input = FindName("Result" + singleReg.Name);
+                var input = FindName(singleReg.Name + "r");
                 var inputChild = input as TextBlock;
                 var intFromHex = int.Parse(singleReg.Value, NumberStyles.HexNumber) + 1;
 
@@ -129,7 +129,7 @@ namespace e8086
 
             if (singleReg != null)
             {
-                var input = FindName("Result" + singleReg.Name);
+                var input = FindName(singleReg.Name + "r");
                 var inputChild = input as TextBlock;
                 var intFromHex = int.Parse(singleReg.Value, NumberStyles.HexNumber) - 1;
 
@@ -152,7 +152,7 @@ namespace e8086
 
             if (singleReg != null)
             {
-                var input = FindName("Result" + singleReg.Name);
+                var input = FindName(singleReg.Name + "r");
                 var inputChild = input as TextBlock;
                 var binaryString = string.Join(string.Empty,
                     singleReg.Value.Select(c =>
@@ -174,7 +174,7 @@ namespace e8086
 
             if (singleReg != null)
             {
-                var input = FindName("Result" + singleReg.Name);
+                var input = FindName(singleReg.Name + "r");
                 var inputChild = input as TextBlock;
 
                 NotOperation(sender, e);
