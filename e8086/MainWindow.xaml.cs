@@ -193,6 +193,22 @@ namespace e8086
             }
         }
 
+        public void ADD(object sender, RoutedEventArgs e)
+        {
+            if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
+            {
+                if (FindName(registerX.Name + "r") is not TextBlock input) return;
+
+                uint bitesX = byte.Parse(registerX.Value, NumberStyles.HexNumber);
+                uint bitesY = byte.Parse(registerY.Value, NumberStyles.HexNumber);
+
+                var result = bitesX + bitesY;
+
+                registerX.Value = result.ToString("X2");
+                input.Text = result.ToString("X2");
+            }
+        }
+
         public class Register
         {
             public string Name { get; init; }
