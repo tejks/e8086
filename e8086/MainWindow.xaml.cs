@@ -27,7 +27,9 @@ namespace e8086
             foreach (var reg in registerNames)
                 Registers.Add(new Register { Name = reg, Value = "00" });
 
-            OneRegisterOperationList.ItemsSource = Registers;
+            SingleOperations.ItemsSource = Registers;
+            DoubleRegistersX.ItemsSource = Registers;
+            DoubleRegistersY.ItemsSource = Registers;
         }
 
         public void Clear(object sender, RoutedEventArgs e)
@@ -83,7 +85,7 @@ namespace e8086
 
         public void Inc(object sender, RoutedEventArgs e)
         {
-            if ((Register)OneRegisterOperationList.SelectedItem is Register register)
+            if ((Register)SingleOperations.SelectedItem is Register register)
             {
                 if (FindName(register.Name + "r") is not TextBlock input) return;
 
@@ -100,7 +102,7 @@ namespace e8086
 
         public void Dec(object sender, RoutedEventArgs e)
         {
-            if ((Register)OneRegisterOperationList.SelectedItem is Register register)
+            if ((Register)SingleOperations.SelectedItem is Register register)
             {
                 if (FindName(register.Name + "r") is not TextBlock input) return;
 
@@ -117,7 +119,7 @@ namespace e8086
 
         public void Not(object sender, RoutedEventArgs e)
         {
-            if ((Register)OneRegisterOperationList.SelectedItem is Register register)
+            if ((Register)SingleOperations.SelectedItem is Register register)
             {
                 if (FindName(register.Name + "r") is not TextBlock input) return;
 
@@ -132,7 +134,7 @@ namespace e8086
 
         public void Neg(object sender, RoutedEventArgs e)
         {
-            if ((Register)OneRegisterOperationList.SelectedItem is Register register)
+            if ((Register)SingleOperations.SelectedItem is Register register)
             {
                 if (FindName(register.Name + "r") is not TextBlock input) return;
 
@@ -140,6 +142,101 @@ namespace e8086
                 Inc(sender, e);
 
                 input.Text = register.Value.ToUpper().PadLeft(2, '0');
+            }
+        }
+
+        public void AND(object sender, RoutedEventArgs e)
+        {
+            if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
+            {
+                if (FindName(registerX.Name + "r") is not TextBlock input) return;
+
+                uint bitesX = byte.Parse(registerX.Value, NumberStyles.HexNumber);
+                uint bitesY = byte.Parse(registerY.Value, NumberStyles.HexNumber);
+
+                var result = bitesX & bitesY;
+
+                registerX.Value = result.ToString("X2");
+                input.Text = result.ToString("X2");
+            }
+        }
+
+        public void OR(object sender, RoutedEventArgs e)
+        {
+            if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
+            {
+                if (FindName(registerX.Name + "r") is not TextBlock input) return;
+
+                uint bitesX = byte.Parse(registerX.Value, NumberStyles.HexNumber);
+                uint bitesY = byte.Parse(registerY.Value, NumberStyles.HexNumber);
+
+                var result = bitesX | bitesY;
+
+                registerX.Value = result.ToString("X2");
+                input.Text = result.ToString("X2");
+            }
+        }
+
+        public void XOR(object sender, RoutedEventArgs e)
+        {
+            if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
+            {
+                if (FindName(registerX.Name + "r") is not TextBlock input) return;
+
+                uint bitesX = byte.Parse(registerX.Value, NumberStyles.HexNumber);
+                uint bitesY = byte.Parse(registerY.Value, NumberStyles.HexNumber);
+
+                var result = bitesX ^ bitesY;
+
+                registerX.Value = result.ToString("X2");
+                input.Text = result.ToString("X2");
+            }
+        }
+
+        public void ADD(object sender, RoutedEventArgs e)
+        {
+            if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
+            {
+                if (FindName(registerX.Name + "r") is not TextBlock input) return;
+
+                uint bitesX = byte.Parse(registerX.Value, NumberStyles.HexNumber);
+                uint bitesY = byte.Parse(registerY.Value, NumberStyles.HexNumber);
+
+                var result = bitesX + bitesY;
+
+                registerX.Value = result.ToString("X2");
+                input.Text = result.ToString("X2");
+            }
+        }
+
+        public void MOV(object sender, RoutedEventArgs e)
+        {
+            if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
+            {
+                if (FindName(registerX.Name + "r") is not TextBlock inputX) return;
+                if (FindName(registerY.Name + "r") is not TextBlock inputY) return;
+
+                inputX.Text = inputY.Text;
+                registerX.Value = registerY.Value;
+
+                inputY.Text = "00";
+                registerY.Value = "00";
+            }
+        }
+
+        public void XCHG(object sender, RoutedEventArgs e)
+        {
+            if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
+            {
+                if (FindName(registerX.Name + "r") is not TextBlock inputX) return;
+                if (FindName(registerY.Name + "r") is not TextBlock inputY) return;
+
+                var temp = registerX.Value;
+                inputX.Text = registerY.Value;
+                registerX.Value = registerY.Value;
+
+                inputY.Text = temp;
+                registerY.Value = temp;
             }
         }
 

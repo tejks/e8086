@@ -119,7 +119,7 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <ComboBox x:Name="OneRegisterOperationList" Grid.Column="0" Grid.Row="0" Width="70" Height="26">
+                        <ComboBox x:Name="SingleOperations" Grid.Column="0" Grid.Row="0" Width="70" Height="26">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock x:Name="singleRegister" Text="{Binding Name}" FontSize="15"/>
@@ -151,14 +151,14 @@
                         </Grid.RowDefinitions>
                         
                         <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <ComboBox x:Name="TwoRegistersOperationListFirst" Width="70" Height="26" Margin="10, 0, 10, 0">
+                            <ComboBox x:Name="DoubleRegistersX" Width="70" Height="26" Margin="10, 0, 10, 0">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock x:Name="firstRegister" Text="{Binding Name}"/>
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
-                            <ComboBox x:Name="TwoRegistersOperationListSecond" Width="70" Height="26" Margin="10, 0, 10, 0">
+                            <ComboBox x:Name="DoubleRegistersY" Width="70" Height="26" Margin="10, 0, 10, 0">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock x:Name="secondRegister" Text="{Binding Name}"/>
@@ -169,13 +169,13 @@
 
                         <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="350">
                             <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Button Content="MOV" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="XCHG" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="ADD" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="AND" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="OR"  Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="XOR" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button Content="MOV" Click="MOV" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button Content="XCHG" Click="XCHG" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button Content="ADD" Click="ADD" Width="55" Height="35" Margin="20, 10, 20, 10"/>
                                 <Button Content="SUB" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button Content="AND" Click="AND" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button Content="OR"  Click="OR" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button Content="XOR" Click="XOR" Width="55" Height="35" Margin="20, 10, 20, 10"/>
                             </WrapPanel>
                         </StackPanel>
                     </Grid>
