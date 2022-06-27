@@ -98,13 +98,30 @@ namespace e8086
             }
         }
 
+        public void DecOperation(object sender, RoutedEventArgs e)
+        {
+            if ((Register)OneRegisterOperationList.SelectedItem is Register register)
+            {
+                if (FindName(register.Name + "r") is not TextBlock input) return;
+
+                int data = int.Parse(register.Value, NumberStyles.HexNumber) - 1;
+
+                if (data != -1)
+                    register.Value = data.ToString("X");
+                else
+                    register.Value = "FF";
+
+                input.Text = register.Value;
+            }
+        }
+
         public class Register
         {
             public string Name { get; init; }
             public string Value { get; set; }
         }
 
-                private void InputOk(TextBox input)
+        private void InputOk(TextBox input)
         {
             input.BorderThickness = new Thickness(2);
             input.BorderBrush = Brushes.Green;
