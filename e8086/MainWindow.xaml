@@ -62,9 +62,9 @@
                     </Grid>
 
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Button Click="RandomOperation" Content="Random" Width="70" Height="30" BorderThickness="0" Margin="5"/>
-                        <Button Click="MovAllOperation" Content="Move" Width="70" Height="30" BorderThickness="0" Margin="5"/>
-                        <Button Click="ClearOperation" Content="Clear" Width="70" Height="30" BorderThickness="0" Margin="5"/>
+                        <Button Click="Random" Content="Random" Width="70" Height="30" BorderThickness="0" Margin="5"/>
+                        <Button Click="Clear" Content="Clear" Width="70" Height="30" BorderThickness="0" Margin="5"/>
+                        <Button Click="Move" Content="Move" Width="70" Height="30" BorderThickness="0" Margin="5"/>
                     </StackPanel>
                 </StackPanel>
 
