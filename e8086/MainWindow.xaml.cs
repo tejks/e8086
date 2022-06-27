@@ -28,6 +28,8 @@ namespace e8086
                 Registers.Add(new Register { Name = reg, Value = "00" });
 
             SingleOperations.ItemsSource = Registers;
+            DoubleRegistersX.ItemsSource = Registers;
+            DoubleRegistersY.ItemsSource = Registers;
         }
 
         public void Clear(object sender, RoutedEventArgs e)
@@ -140,6 +142,22 @@ namespace e8086
                 Inc(sender, e);
 
                 input.Text = register.Value.ToUpper().PadLeft(2, '0');
+            }
+        }
+
+        public void And(object sender, RoutedEventArgs e)
+        {
+            if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
+            {
+                if (FindName(registerX.Name + "r") is not TextBlock input) return;
+
+                uint bitesX = byte.Parse(registerX.Value, NumberStyles.HexNumber);
+                uint bitesY = byte.Parse(registerY.Value, NumberStyles.HexNumber);
+
+                var result = bitesX & bitesY;
+
+                registerX.Value = result.ToString("X");
+                input.Text = result.ToString("X");
             }
         }
 

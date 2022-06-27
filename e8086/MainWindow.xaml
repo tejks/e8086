@@ -151,14 +151,14 @@
                         </Grid.RowDefinitions>
                         
                         <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <ComboBox x:Name="TwoRegistersOperationListFirst" Width="70" Height="26" Margin="10, 0, 10, 0">
+                            <ComboBox x:Name="DoubleRegistersX" Width="70" Height="26" Margin="10, 0, 10, 0">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock x:Name="firstRegister" Text="{Binding Name}"/>
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
-                            <ComboBox x:Name="TwoRegistersOperationListSecond" Width="70" Height="26" Margin="10, 0, 10, 0">
+                            <ComboBox x:Name="DoubleRegistersY" Width="70" Height="26" Margin="10, 0, 10, 0">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock x:Name="secondRegister" Text="{Binding Name}"/>
@@ -172,7 +172,7 @@
                                 <Button Content="MOV" Width="55" Height="35" Margin="20, 10, 20, 10"/>
                                 <Button Content="XCHG" Width="55" Height="35" Margin="20, 10, 20, 10"/>
                                 <Button Content="ADD" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="AND" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button Content="AND" Click="And" Width="55" Height="35" Margin="20, 10, 20, 10"/>
                                 <Button Content="OR"  Width="55" Height="35" Margin="20, 10, 20, 10"/>
                                 <Button Content="XOR" Width="55" Height="35" Margin="20, 10, 20, 10"/>
                                 <Button Content="SUB" Width="55" Height="35" Margin="20, 10, 20, 10"/>
