@@ -224,6 +224,22 @@ namespace e8086
             }
         }
 
+        public void XCHG(object sender, RoutedEventArgs e)
+        {
+            if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
+            {
+                if (FindName(registerX.Name + "r") is not TextBlock inputX) return;
+                if (FindName(registerY.Name + "r") is not TextBlock inputY) return;
+
+                var temp = registerX.Value;
+                inputX.Text = registerY.Value;
+                registerX.Value = registerY.Value;
+
+                inputY.Text = temp;
+                registerY.Value = temp;
+            }
+        }
+
         public class Register
         {
             public string Name { get; init; }
