@@ -172,10 +172,10 @@
                                 <Button Content="MOV" Width="55" Height="35" Margin="20, 10, 20, 10"/>
                                 <Button Content="XCHG" Width="55" Height="35" Margin="20, 10, 20, 10"/>
                                 <Button Content="ADD" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="AND" Click="And" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="OR"  Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="XOR" Width="55" Height="35" Margin="20, 10, 20, 10"/>
                                 <Button Content="SUB" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button Content="AND" Click="AND" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button Content="OR"  Click="OR" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button Content="XOR" Click="XOR" Width="55" Height="35" Margin="20, 10, 20, 10"/>
                             </WrapPanel>
                         </StackPanel>
                     </Grid>

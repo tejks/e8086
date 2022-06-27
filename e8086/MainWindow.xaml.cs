@@ -145,7 +145,7 @@ namespace e8086
             }
         }
 
-        public void And(object sender, RoutedEventArgs e)
+        public void AND(object sender, RoutedEventArgs e)
         {
             if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
             {
@@ -156,8 +156,40 @@ namespace e8086
 
                 var result = bitesX & bitesY;
 
-                registerX.Value = result.ToString("X");
-                input.Text = result.ToString("X");
+                registerX.Value = result.ToString("X2");
+                input.Text = result.ToString("X2");
+            }
+        }
+
+        public void OR(object sender, RoutedEventArgs e)
+        {
+            if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
+            {
+                if (FindName(registerX.Name + "r") is not TextBlock input) return;
+
+                uint bitesX = byte.Parse(registerX.Value, NumberStyles.HexNumber);
+                uint bitesY = byte.Parse(registerY.Value, NumberStyles.HexNumber);
+
+                var result = bitesX | bitesY;
+
+                registerX.Value = result.ToString("X2");
+                input.Text = result.ToString("X2");
+            }
+        }
+
+        public void XOR(object sender, RoutedEventArgs e)
+        {
+            if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
+            {
+                if (FindName(registerX.Name + "r") is not TextBlock input) return;
+
+                uint bitesX = byte.Parse(registerX.Value, NumberStyles.HexNumber);
+                uint bitesY = byte.Parse(registerY.Value, NumberStyles.HexNumber);
+
+                var result = bitesX ^ bitesY;
+
+                registerX.Value = result.ToString("X2");
+                input.Text = result.ToString("X2");
             }
         }
 
