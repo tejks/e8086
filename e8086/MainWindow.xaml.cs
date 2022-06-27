@@ -115,6 +115,21 @@ namespace e8086
             }
         }
 
+        public void NotOperation(object sender, RoutedEventArgs e)
+        {
+            if ((Register)OneRegisterOperationList.SelectedItem is Register register)
+            {
+                if (FindName(register.Name + "r") is not TextBlock input) return;
+
+                uint bites = byte.Parse(register.Value, NumberStyles.HexNumber);
+
+                var result = (~bites).ToString("X").Substring(6, 2);
+
+                register.Value = result;
+                input.Text = result;
+            }
+        }
+
         public class Register
         {
             public string Name { get; init; }
