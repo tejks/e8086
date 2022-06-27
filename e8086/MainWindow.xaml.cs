@@ -27,7 +27,7 @@ namespace e8086
             foreach (var reg in registerNames)
                 Registers.Add(new Register { Name = reg, Value = "00" });
 
-            OneRegisterOperationList.ItemsSource = Registers;
+            SingleOperations.ItemsSource = Registers;
         }
 
         public void Clear(object sender, RoutedEventArgs e)
@@ -83,7 +83,7 @@ namespace e8086
 
         public void Inc(object sender, RoutedEventArgs e)
         {
-            if ((Register)OneRegisterOperationList.SelectedItem is Register register)
+            if ((Register)SingleOperations.SelectedItem is Register register)
             {
                 if (FindName(register.Name + "r") is not TextBlock input) return;
 
@@ -100,7 +100,7 @@ namespace e8086
 
         public void Dec(object sender, RoutedEventArgs e)
         {
-            if ((Register)OneRegisterOperationList.SelectedItem is Register register)
+            if ((Register)SingleOperations.SelectedItem is Register register)
             {
                 if (FindName(register.Name + "r") is not TextBlock input) return;
 
@@ -117,7 +117,7 @@ namespace e8086
 
         public void Not(object sender, RoutedEventArgs e)
         {
-            if ((Register)OneRegisterOperationList.SelectedItem is Register register)
+            if ((Register)SingleOperations.SelectedItem is Register register)
             {
                 if (FindName(register.Name + "r") is not TextBlock input) return;
 
@@ -132,7 +132,7 @@ namespace e8086
 
         public void Neg(object sender, RoutedEventArgs e)
         {
-            if ((Register)OneRegisterOperationList.SelectedItem is Register register)
+            if ((Register)SingleOperations.SelectedItem is Register register)
             {
                 if (FindName(register.Name + "r") is not TextBlock input) return;
 

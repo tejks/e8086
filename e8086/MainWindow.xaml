@@ -119,7 +119,7 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <ComboBox x:Name="OneRegisterOperationList" Grid.Column="0" Grid.Row="0" Width="70" Height="26">
+                        <ComboBox x:Name="SingleOperations" Grid.Column="0" Grid.Row="0" Width="70" Height="26">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock x:Name="singleRegister" Text="{Binding Name}" FontSize="15"/>
