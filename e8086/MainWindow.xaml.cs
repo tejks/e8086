@@ -209,6 +209,21 @@ namespace e8086
             }
         }
 
+        public void MOV(object sender, RoutedEventArgs e)
+        {
+            if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
+            {
+                if (FindName(registerX.Name + "r") is not TextBlock inputX) return;
+                if (FindName(registerY.Name + "r") is not TextBlock inputY) return;
+
+                inputX.Text = inputY.Text;
+                registerX.Value = registerY.Value;
+
+                inputY.Text = "00";
+                registerY.Value = "00";
+            }
+        }
+
         public class Register
         {
             public string Name { get; init; }
