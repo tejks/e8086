@@ -81,7 +81,7 @@ namespace e8086
             }
         }
 
-        public void IncOperation(object sender, RoutedEventArgs e)
+        public void Inc(object sender, RoutedEventArgs e)
         {
             if ((Register)OneRegisterOperationList.SelectedItem is Register register)
             {
@@ -98,13 +98,58 @@ namespace e8086
             }
         }
 
+        public void Dec(object sender, RoutedEventArgs e)
+        {
+            if ((Register)OneRegisterOperationList.SelectedItem is Register register)
+            {
+                if (FindName(register.Name + "r") is not TextBlock input) return;
+
+                int data = int.Parse(register.Value, NumberStyles.HexNumber) - 1;
+
+                if (data != -1)
+                    register.Value = data.ToString("X");
+                else
+                    register.Value = "FF";
+
+                input.Text = register.Value;
+            }
+        }
+
+        public void Not(object sender, RoutedEventArgs e)
+        {
+            if ((Register)OneRegisterOperationList.SelectedItem is Register register)
+            {
+                if (FindName(register.Name + "r") is not TextBlock input) return;
+
+                uint bites = byte.Parse(register.Value, NumberStyles.HexNumber);
+
+                var result = (~bites).ToString("X").Substring(6, 2);
+
+                register.Value = result;
+                input.Text = result;
+            }
+        }
+
+        public void Neg(object sender, RoutedEventArgs e)
+        {
+            if ((Register)OneRegisterOperationList.SelectedItem is Register register)
+            {
+                if (FindName(register.Name + "r") is not TextBlock input) return;
+
+                Not(sender, e);
+                Inc(sender, e);
+
+                input.Text = register.Value.ToUpper().PadLeft(2, '0');
+            }
+        }
+
         public class Register
         {
             public string Name { get; init; }
             public string Value { get; set; }
         }
 
-                private void InputOk(TextBox input)
+        private void InputOk(TextBox input)
         {
             input.BorderThickness = new Thickness(2);
             input.BorderBrush = Brushes.Green;
