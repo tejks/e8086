@@ -129,10 +129,10 @@
 
                         <StackPanel Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Width="350">
                             <WrapPanel HorizontalAlignment="Center" Width="auto">
-                                <Button Content="INC" Click="IncOperation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="DEC" Click="DecOperation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="NOT" Click="NotOperation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="NEG" Click="NegOperation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button Content="INC" Click="Inc" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button Content="DEC" Click="Dec" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button Content="NOT" Click="Not" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button Content="NEG" Click="Neg" Width="55" Height="35" Margin="20, 10, 20, 10"/>
                             </WrapPanel>
                         </StackPanel>
                     </Grid>

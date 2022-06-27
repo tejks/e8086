@@ -81,7 +81,7 @@ namespace e8086
             }
         }
 
-        public void IncOperation(object sender, RoutedEventArgs e)
+        public void Inc(object sender, RoutedEventArgs e)
         {
             if ((Register)OneRegisterOperationList.SelectedItem is Register register)
             {
@@ -98,7 +98,7 @@ namespace e8086
             }
         }
 
-        public void DecOperation(object sender, RoutedEventArgs e)
+        public void Dec(object sender, RoutedEventArgs e)
         {
             if ((Register)OneRegisterOperationList.SelectedItem is Register register)
             {
@@ -115,7 +115,7 @@ namespace e8086
             }
         }
 
-        public void NotOperation(object sender, RoutedEventArgs e)
+        public void Not(object sender, RoutedEventArgs e)
         {
             if ((Register)OneRegisterOperationList.SelectedItem is Register register)
             {
@@ -130,14 +130,14 @@ namespace e8086
             }
         }
 
-        public void NegOperation(object sender, RoutedEventArgs e)
+        public void Neg(object sender, RoutedEventArgs e)
         {
             if ((Register)OneRegisterOperationList.SelectedItem is Register register)
             {
                 if (FindName(register.Name + "r") is not TextBlock input) return;
 
-                NotOperation(sender, e);
-                IncOperation(sender, e);
+                Not(sender, e);
+                Inc(sender, e);
 
                 input.Text = register.Value.ToUpper().PadLeft(2, '0');
             }
