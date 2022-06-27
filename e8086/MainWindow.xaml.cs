@@ -130,6 +130,19 @@ namespace e8086
             }
         }
 
+        public void NegOperation(object sender, RoutedEventArgs e)
+        {
+            if ((Register)OneRegisterOperationList.SelectedItem is Register register)
+            {
+                if (FindName(register.Name + "r") is not TextBlock input) return;
+
+                NotOperation(sender, e);
+                IncOperation(sender, e);
+
+                input.Text = register.Value.ToUpper().PadLeft(2, '0');
+            }
+        }
+
         public class Register
         {
             public string Name { get; init; }
