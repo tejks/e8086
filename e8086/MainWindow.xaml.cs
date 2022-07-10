@@ -55,7 +55,10 @@ namespace e8086
                 if (FindName(register.Type) is not TextBox input) continue;
                 if (FindName(register.Type + "r") is not TextBlock moveTo) continue;
 
+                ClearInput(input);
+
                 moveTo.Text = "00";
+                register.Value = "00";
 
                 var text = input.Text;
 
@@ -86,7 +89,7 @@ namespace e8086
                 int data = int.Parse(register.Value, NumberStyles.HexNumber) + 1;
 
                 if (data != 256)
-                    register.Value = data.ToString("X");
+                    register.Value = data.ToString("X2");
                 else
                     register.Value = "00";
 
@@ -103,7 +106,7 @@ namespace e8086
                 int data = int.Parse(register.Value, NumberStyles.HexNumber) - 1;
 
                 if (data != -1)
-                    register.Value = data.ToString("X");
+                    register.Value = data.ToString("X2");
                 else
                     register.Value = "FF";
 
