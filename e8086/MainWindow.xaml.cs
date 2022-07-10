@@ -211,6 +211,24 @@ namespace e8086
             }
         }
 
+        public void SUB(object sender, RoutedEventArgs e)
+        {
+            if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
+            {
+                if (FindName(registerX.Name + "r") is not TextBlock input) return;
+
+                var x = Convert.ToInt32(registerX.Value, 16);
+                var y = Convert.ToInt32(registerY.Value, 16);
+
+                var summary = x - y;
+
+                var result = summary >= 0 ? summary : summary + 256;
+
+                registerX.Value = result.ToString("X2");
+                input.Text = result.ToString("X2");
+            }
+        }
+
         public void MOV(object sender, RoutedEventArgs e)
         {
             if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
