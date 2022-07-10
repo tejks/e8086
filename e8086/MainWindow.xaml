@@ -3,184 +3,208 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:e8086"
         mc:Ignorable="d"
-        Title="MainWindow" Height="850" Width="950">
+        Title="e8086 Emulator" Height="870" Width="950"
+        Background="{x:Null}"
+        WindowStyle="SingleBorderWindow"
+        WindowStartupLocation="CenterScreen"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        ShowInTaskbar="True"
+        FontSize="15" Icon="/processor.png" ResizeMode="NoResize">
 
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0">
-        <DockPanel>
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="5"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-
-                <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="40">
-                    <Grid HorizontalAlignment="Center">
+    <materialDesign:Card Background="{DynamicResource MaterialDesignPaper}">
+        <materialDesign:DialogHost CloseOnClickAway="True" x:Name="DialogHost">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0">
+                <DockPanel>
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="25"/>
-                            <ColumnDefinition Width="60"/>
-                            <ColumnDefinition Width="25"/>
-                            <ColumnDefinition Width="25"/>
-                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="5"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Column="0" Grid.Row="1" Text="AH" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBox x:Name="AH" Grid.Column="1" Grid.Row="1" MaxLength="2" Background="Honeydew" Width="35" Height="35" Margin="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                        <TextBlock Grid.Column="3" Grid.Row="1" Text="AL" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBox x:Name="AL" Grid.Column="4" Grid.Row="1" MaxLength="2" Background="Honeydew" Width="35" Height="35" Margin="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="40">
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35"/>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="35"/>
+                                    <ColumnDefinition Width="60"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0"/>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="60"/>
+                                    <RowDefinition Height="60"/>
+                                    <RowDefinition Height="60"/>
+                                    <RowDefinition Height="60"/>
+                                    <RowDefinition Height="35"/>
+                                </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Column="0" Grid.Row="2" Text="BH" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBox x:Name="BH" Grid.Column="1" Grid.Row="2" MaxLength="2" Background="Honeydew" Width="35" Height="35" Margin="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                        <TextBlock Grid.Column="3" Grid.Row="2" Text="BL" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBox x:Name="BL" Grid.Column="4" Grid.Row="2" MaxLength="2" Background="Honeydew" Width="35" Height="35" Margin="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                <TextBlock Grid.Column="0" Grid.Row="2" Text="AH" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBox x:Name="AH" Grid.Column="1" Grid.Row="2" MaxLength="2" Width="35" Height="34" Margin="7" FontSize="17" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"/>
+                                <TextBlock Grid.Column="3" Grid.Row="2" Text="AL" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBox x:Name="AL" Grid.Column="4" Grid.Row="2" MaxLength="2" Width="35" Height="34" Margin="7" FontSize="17" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"/>
 
-                        <TextBlock Grid.Column="0" Grid.Row="3" Text="CD" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBox x:Name="CH" Grid.Column="1" Grid.Row="3" MaxLength="2" Background="Honeydew" Width="35" Height="35" Margin="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                        <TextBlock Grid.Column="3" Grid.Row="3" Text="CL" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBox x:Name="CL" Grid.Column="4" Grid.Row="3" MaxLength="2" Background="Honeydew" Width="35" Height="35" Margin="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                <TextBlock Grid.Column="0" Grid.Row="3" Text="BH" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBox x:Name="BH" Grid.Column="1" Grid.Row="3" MaxLength="2" Width="35" Height="34" Margin="7" FontSize="17" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"/>
+                                <TextBlock Grid.Column="3" Grid.Row="3" Text="BL" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBox x:Name="BL" Grid.Column="4" Grid.Row="3" MaxLength="2" Width="35" Height="34" Margin="7" FontSize="17" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"/>
 
-                        <TextBlock Grid.Column="0" Grid.Row="4" Text="DH" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBox x:Name="DH" Grid.Column="1" Grid.Row="4" MaxLength="2" Background="Honeydew" Width="35" Height="35" Margin="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                        <TextBlock Grid.Column="3" Grid.Row="4" Text="DL" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBox x:Name="DL" Grid.Column="4" Grid.Row="4" MaxLength="2" Background="Honeydew" Width="35" Height="35" Margin="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    </Grid>
+                                <TextBlock Grid.Column="0" Grid.Row="4" Text="CD" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBox x:Name="CH" Grid.Column="1" Grid.Row="4" MaxLength="2" Width="35" Height="34" Margin="7" FontSize="17" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"/>
+                                <TextBlock Grid.Column="3" Grid.Row="4" Text="CL" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBox x:Name="CL" Grid.Column="4" Grid.Row="4" MaxLength="2" Width="35" Height="34" Margin="7" FontSize="17" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"/>
 
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Button Click="Random" Content="Random" Width="70" Height="30" BorderThickness="0" Margin="5"/>
-                        <Button Click="Clear" Content="Clear" Width="70" Height="30" BorderThickness="0" Margin="5"/>
-                        <Button Click="Move" Content="Move" Width="70" Height="30" BorderThickness="0" Margin="5"/>
-                    </StackPanel>
-                </StackPanel>
+                                <TextBlock Grid.Column="0" Grid.Row="5" Text="DH" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBox x:Name="DH" Grid.Column="1" Grid.Row="5" MaxLength="2" Width="35" Height="34" Margin="7" FontSize="17" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"/>
+                                <TextBlock Grid.Column="3" Grid.Row="5" Text="DL" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBox x:Name="DL" Grid.Column="4" Grid.Row="5" MaxLength="2" Width="35" Height="34" Margin="7" FontSize="17" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"/>
+                            </Grid>
 
-
-                <StackPanel Grid.Column="3" Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="40">
-                    <Grid HorizontalAlignment="Center">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15"/>
-                            <ColumnDefinition Width="60"/>
-                            <ColumnDefinition Width="20"/>
-                            <ColumnDefinition Width="15"/>
-                            <ColumnDefinition Width="60"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="50"/>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Grid.Column="0" Grid.Row="0" Text="AH" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock x:Name="AHr" Grid.Column="1" Grid.Row="0" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <TextBlock Grid.Column="3" Grid.Row="0" Text="AL" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock x:Name="ALr" Grid.Column="4" Grid.Row="0" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-
-                        <TextBlock Grid.Column="0" Grid.Row="1" Text="BH" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock x:Name="BHr" Grid.Column="1" Grid.Row="1" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <TextBlock Grid.Column="3" Grid.Row="1" Text="BL" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock x:Name="BLr" Grid.Column="4" Grid.Row="1" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-
-                        <TextBlock Grid.Column="0" Grid.Row="2" Text="CH" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock x:Name="CHr" Grid.Column="1" Grid.Row="2" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <TextBlock Grid.Column="3" Grid.Row="2" Text="CL" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock x:Name="CLr" Grid.Column="4" Grid.Row="2" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-
-                        <TextBlock Grid.Column="0" Grid.Row="3" Text="DH" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock x:Name="DHr" Grid.Column="1" Grid.Row="3" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <TextBlock Grid.Column="3" Grid.Row="3" Text="AL" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock x:Name="DLr" Grid.Column="4" Grid.Row="3" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    </Grid>
-                </StackPanel>
-
-                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="40">
-                    <Grid HorizontalAlignment="Center">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <ComboBox x:Name="SingleOperations" Grid.Column="0" Grid.Row="0" Width="70" Height="26">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock x:Name="singleRegister" Text="{Binding Name}" FontSize="15"/>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-
-                        <StackPanel Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Width="350">
-                            <WrapPanel HorizontalAlignment="Center" Width="auto">
-                                <Button Content="INC" Click="Inc" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="DEC" Click="Dec" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="NOT" Click="Not" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="NEG" Click="Neg" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                            </WrapPanel>
-                        </StackPanel>
-                    </Grid>
-                </StackPanel>
-
-                <StackPanel Grid.Column="3" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="40">
-                    <Grid HorizontalAlignment="Center">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        
-                        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <ComboBox x:Name="DoubleRegistersX" Width="70" Height="26" Margin="10, 0, 10, 0">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock x:Name="firstRegister" Text="{Binding Name}"/>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                            <ComboBox x:Name="DoubleRegistersY" Width="70" Height="26" Margin="10, 0, 10, 0">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock x:Name="secondRegister" Text="{Binding Name}"/>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Button Click="Random" Content="Random" Width="90" Height="35" BorderThickness="0" Margin="5"/>
+                                <Button Click="Clear" Content="Clear" Width="90" Height="35" BorderThickness="0" Margin="5"/>
+                                <Button Click="Move" Content="Move" Width="90" Height="35" BorderThickness="0" Margin="5"/>
+                            </StackPanel>
                         </StackPanel>
 
-                        <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="350">
-                            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Button Content="MOV" Click="MOV" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="XCHG" Click="XCHG" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="ADD" Click="ADD" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="SUB" Click="SUB" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="AND" Click="AND" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="OR"  Click="OR" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button Content="XOR" Click="XOR" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                            </WrapPanel>
+
+                        <StackPanel Grid.Column="3" Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="40">
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="35"/>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="60"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Column="0" Grid.Row="0" TextAlignment="Center" Grid.ColumnSpan="5" Text="REGISTER" FontSize="19"/>
+
+                                <TextBlock Grid.Column="0" Grid.Row="2" Text="AH" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="AHr" Grid.Column="1" Grid.Row="2" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="3" Grid.Row="2" Text="AL" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="ALr" Grid.Column="4" Grid.Row="2" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                <TextBlock Grid.Column="0" Grid.Row="3" Text="BH" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="BHr" Grid.Column="1" Grid.Row="3" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="3" Grid.Row="3" Text="BL" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="BLr" Grid.Column="4" Grid.Row="3" Text="00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                <TextBlock Grid.Column="0" Grid.Row="4" Text="CH" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="CHr" Grid.Column="1" Grid.Row="4" Text="00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="3" Grid.Row="4" Text="CL" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="CLr" Grid.Column="4" Grid.Row="4" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                <TextBlock Grid.Column="0" Grid.Row="5" Text="DH" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="DHr" Grid.Column="1" Grid.Row="5" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="3" Grid.Row="5" Text="AL" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="DLr" Grid.Column="4" Grid.Row="5" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="40 25">
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Column="0" Grid.Row="0" TextAlignment="Center" Grid.ColumnSpan="5" Text="SINGLE OPERATIONS" FontSize="19"/>
+
+                                <ComboBox x:Name="SingleOperations" Grid.Column="0" Grid.Row="2" Width="70" Height="26" Cursor="Hand">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock x:Name="singleRegister" Text="{Binding Type}" FontSize="15" Cursor="Hand"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+
+                                <StackPanel Grid.Column="0" Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Center" Width="350">
+                                    <WrapPanel HorizontalAlignment="Center" Width="auto">
+                                        <Button Content="INC" Click="Inc" Width="70" Height="35" Margin="15 10"/>
+                                        <Button Content="DEC" Click="Dec" Width="70" Height="35" Margin="15 10"/>
+                                        <Button Content="NOT" Click="Not" Width="70" Height="35" Margin="15 10"/>
+                                        <Button Content="NEG" Click="Neg" Width="70" Height="35" Margin="15 10"/>
+                                    </WrapPanel>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="3" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="40 25">
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Column="0" Grid.Row="0" TextAlignment="Center" Grid.ColumnSpan="5" Text="DOUBLE OPERATIONS" FontSize="19"/>
+
+                                <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ComboBox x:Name="DoubleRegistersX" Width="70" Height="26" Margin="10 0" Cursor="Hand">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock x:Name="firstRegister" Text="{Binding Type}" FontSize="15" Cursor="Hand"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <ComboBox x:Name="DoubleRegistersY" Width="70" Height="26" Margin="10 0" Cursor="Hand">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock x:Name="secondRegister" Text="{Binding Type}" FontSize="15" Cursor="Hand"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Top" Width="350">
+                                    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Button Content="MOV" Click="MOV" Width="70" Height="35" Margin="15 10"/>
+                                        <Button Content="XCHG" Click="XCHG" Width="70" Height="35" Margin="15 10"/>
+                                        <Button Content="ADD" Click="ADD" Width="70" Height="35" Margin="15 10"/>
+                                        <Button Content="SUB" Click="SUB" Width="70" Height="35" Margin="15 10"/>
+                                        <Button Content="AND" Click="AND" Width="70" Height="35" Margin="15 10"/>
+                                        <Button Content="OR"  Click="OR" Width="70" Height="35" Margin="15 10"/>
+                                        <Button Content="XOR" Click="XOR" Width="70" Height="35" Margin="15 10"/>
+                                    </WrapPanel>
+                                </StackPanel>
+                            </Grid>
                         </StackPanel>
                     </Grid>
-                </StackPanel>
-            </Grid>
-        </DockPanel>
-    </ScrollViewer>
+                </DockPanel>
+            </ScrollViewer>
+        </materialDesign:DialogHost>
+    </materialDesign:Card>
 </Window>

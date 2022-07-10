@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,9 +9,6 @@ using System.Windows.Media;
 
 namespace e8086
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public List<Register> Registers = new();
@@ -25,7 +21,7 @@ namespace e8086
 
             var registerNames = new[] { "AH", "AL", "BH", "BL", "CH", "CL", "DH", "DL" };
             foreach (var reg in registerNames)
-                Registers.Add(new Register { Name = reg, Value = "00" });
+                Registers.Add(new Register { Type = reg, Value = "00" });
 
             SingleOperations.ItemsSource = Registers;
             DoubleRegistersX.ItemsSource = Registers;
@@ -36,7 +32,7 @@ namespace e8086
         {
             foreach (Register register in Registers)
             {
-                if (FindName(register.Name) is not TextBox input) continue;
+                if (FindName(register.Type) is not TextBox input) continue;
                 input.Text = "";
                 ClearInput(input);
             }
@@ -46,7 +42,7 @@ namespace e8086
         {
             foreach (Register register in Registers)
             {
-                if (FindName(register.Name) is not TextBox input) continue;
+                if (FindName(register.Type) is not TextBox input) continue;
                 input.Text = RandomHexGenerator8Bit();
                 ClearInput(input);
             }
@@ -56,17 +52,18 @@ namespace e8086
         {
             foreach (Register register in Registers)
             {
-                if (FindName(register.Name) is not TextBox input) continue;
-                if (FindName(register.Name + "r") is not TextBlock moveTo) continue;
+                if (FindName(register.Type) is not TextBox input) continue;
+                if (FindName(register.Type + "r") is not TextBlock moveTo) continue;
+
+                ClearInput(input);
 
                 moveTo.Text = "00";
+                register.Value = "00";
 
                 var text = input.Text;
 
                 if (HexValidator(text) && !string.IsNullOrWhiteSpace(text))
                 {
-                    InputOk(input);
-
                     String result;
 
                     if (text.Length == 1)
@@ -87,12 +84,12 @@ namespace e8086
         {
             if ((Register)SingleOperations.SelectedItem is Register register)
             {
-                if (FindName(register.Name + "r") is not TextBlock input) return;
+                if (FindName(register.Type + "r") is not TextBlock input) return;
 
                 int data = int.Parse(register.Value, NumberStyles.HexNumber) + 1;
 
                 if (data != 256)
-                    register.Value = data.ToString("X");
+                    register.Value = data.ToString("X2");
                 else
                     register.Value = "00";
 
@@ -104,12 +101,12 @@ namespace e8086
         {
             if ((Register)SingleOperations.SelectedItem is Register register)
             {
-                if (FindName(register.Name + "r") is not TextBlock input) return;
+                if (FindName(register.Type + "r") is not TextBlock input) return;
 
                 int data = int.Parse(register.Value, NumberStyles.HexNumber) - 1;
 
                 if (data != -1)
-                    register.Value = data.ToString("X");
+                    register.Value = data.ToString("X2");
                 else
                     register.Value = "FF";
 
@@ -121,7 +118,7 @@ namespace e8086
         {
             if ((Register)SingleOperations.SelectedItem is Register register)
             {
-                if (FindName(register.Name + "r") is not TextBlock input) return;
+                if (FindName(register.Type + "r") is not TextBlock input) return;
 
                 uint bites = byte.Parse(register.Value, NumberStyles.HexNumber);
 
@@ -136,7 +133,7 @@ namespace e8086
         {
             if ((Register)SingleOperations.SelectedItem is Register register)
             {
-                if (FindName(register.Name + "r") is not TextBlock input) return;
+                if (FindName(register.Type + "r") is not TextBlock input) return;
 
                 Not(sender, e);
                 Inc(sender, e);
@@ -149,7 +146,7 @@ namespace e8086
         {
             if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
             {
-                if (FindName(registerX.Name + "r") is not TextBlock input) return;
+                if (FindName(registerX.Type + "r") is not TextBlock input) return;
 
                 uint bitesX = byte.Parse(registerX.Value, NumberStyles.HexNumber);
                 uint bitesY = byte.Parse(registerY.Value, NumberStyles.HexNumber);
@@ -165,7 +162,7 @@ namespace e8086
         {
             if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
             {
-                if (FindName(registerX.Name + "r") is not TextBlock input) return;
+                if (FindName(registerX.Type + "r") is not TextBlock input) return;
 
                 uint bitesX = byte.Parse(registerX.Value, NumberStyles.HexNumber);
                 uint bitesY = byte.Parse(registerY.Value, NumberStyles.HexNumber);
@@ -181,7 +178,7 @@ namespace e8086
         {
             if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
             {
-                if (FindName(registerX.Name + "r") is not TextBlock input) return;
+                if (FindName(registerX.Type + "r") is not TextBlock input) return;
 
                 uint bitesX = byte.Parse(registerX.Value, NumberStyles.HexNumber);
                 uint bitesY = byte.Parse(registerY.Value, NumberStyles.HexNumber);
@@ -197,7 +194,7 @@ namespace e8086
         {
             if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
             {
-                if (FindName(registerX.Name + "r") is not TextBlock input) return;
+                if (FindName(registerX.Type + "r") is not TextBlock input) return;
 
                 var x = Convert.ToInt32(registerX.Value, 16);
                 var y = Convert.ToInt32(registerY.Value, 16);
@@ -215,7 +212,7 @@ namespace e8086
         {
             if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
             {
-                if (FindName(registerX.Name + "r") is not TextBlock input) return;
+                if (FindName(registerX.Type + "r") is not TextBlock input) return;
 
                 var x = Convert.ToInt32(registerX.Value, 16);
                 var y = Convert.ToInt32(registerY.Value, 16);
@@ -233,8 +230,8 @@ namespace e8086
         {
             if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
             {
-                if (FindName(registerX.Name + "r") is not TextBlock inputX) return;
-                if (FindName(registerY.Name + "r") is not TextBlock inputY) return;
+                if (FindName(registerX.Type + "r") is not TextBlock inputX) return;
+                if (FindName(registerY.Type + "r") is not TextBlock inputY) return;
 
                 inputX.Text = inputY.Text;
                 registerX.Value = registerY.Value;
@@ -248,8 +245,8 @@ namespace e8086
         {
             if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
             {
-                if (FindName(registerX.Name + "r") is not TextBlock inputX) return;
-                if (FindName(registerY.Name + "r") is not TextBlock inputY) return;
+                if (FindName(registerX.Type + "r") is not TextBlock inputX) return;
+                if (FindName(registerY.Type + "r") is not TextBlock inputY) return;
 
                 var temp = registerX.Value;
                 inputX.Text = registerY.Value;
@@ -262,19 +259,13 @@ namespace e8086
 
         public class Register
         {
-            public string Name { get; init; }
+            public string Type { get; init; }
             public string Value { get; set; }
-        }
-
-        private void InputOk(TextBox input)
-        {
-            input.BorderThickness = new Thickness(2);
-            input.BorderBrush = Brushes.Green;
         }
 
         private void InputError(TextBox input)
         {
-            input.BorderThickness = new Thickness(2);
+            input.BorderThickness = new Thickness(0.5);
             input.BorderBrush = Brushes.Red;
         }
 
