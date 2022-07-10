@@ -74,7 +74,7 @@
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <Button Click="Random" Content="Random" Width="90" Height="35" BorderThickness="0" Margin="5"/>
                                 <Button Click="Clear" Content="Clear" Width="90" Height="35" BorderThickness="0" Margin="5"/>
-                                <Button Click="Move" Content="Move" Width="90" Height="35" BorderThickness="0" Margin="5"/>
+                                <Button Click="Save" Content="Save" Width="90" Height="35" BorderThickness="0" Margin="5"/>
                             </StackPanel>
                         </StackPanel>
 

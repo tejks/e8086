@@ -48,7 +48,7 @@ namespace e8086
             }
         }
 
-        public void Move(object sender, RoutedEventArgs e)
+        public void Save(object sender, RoutedEventArgs e)
         {
             foreach (Register register in Registers)
             {
