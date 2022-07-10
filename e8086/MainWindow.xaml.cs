@@ -199,10 +199,30 @@ namespace e8086
             {
                 if (FindName(registerX.Name + "r") is not TextBlock input) return;
 
-                uint bitesX = byte.Parse(registerX.Value, NumberStyles.HexNumber);
-                uint bitesY = byte.Parse(registerY.Value, NumberStyles.HexNumber);
+                var x = Convert.ToInt32(registerX.Value, 16);
+                var y = Convert.ToInt32(registerY.Value, 16);
 
-                var result = bitesX + bitesY;
+                var summary = x + y;
+
+                var result = summary < 255 ? summary : summary % 256;
+
+                registerX.Value = result.ToString("X2");
+                input.Text = result.ToString("X2");
+            }
+        }
+
+        public void SUB(object sender, RoutedEventArgs e)
+        {
+            if ((Register)DoubleRegistersX.SelectedItem is Register registerX && (Register)DoubleRegistersY.SelectedItem is Register registerY)
+            {
+                if (FindName(registerX.Name + "r") is not TextBlock input) return;
+
+                var x = Convert.ToInt32(registerX.Value, 16);
+                var y = Convert.ToInt32(registerY.Value, 16);
+
+                var summary = x - y;
+
+                var result = summary >= 0 ? summary : summary + 256;
 
                 registerX.Value = result.ToString("X2");
                 input.Text = result.ToString("X2");
