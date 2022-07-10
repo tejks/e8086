@@ -6,13 +6,13 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:e8086"
         mc:Ignorable="d"
-        Title="MainWindow" Height="850" Width="950"
+        Title="e8086 Emulator" Height="870" Width="950"
         Background="{x:Null}"
         WindowStyle="SingleBorderWindow"
         WindowStartupLocation="CenterScreen"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         ShowInTaskbar="True"
-        FontSize="15">
+        FontSize="15" Icon="/processor.png" ResizeMode="NoResize">
 
     <materialDesign:Card Background="{DynamicResource MaterialDesignPaper}">
         <materialDesign:DialogHost CloseOnClickAway="True" x:Name="DialogHost">
@@ -41,7 +41,7 @@
                                     <ColumnDefinition Width="60"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="35"/>
+                                    <RowDefinition Height="0"/>
                                     <RowDefinition Height="20"/>
                                     <RowDefinition Height="60"/>
                                     <RowDefinition Height="60"/>
@@ -49,8 +49,6 @@
                                     <RowDefinition Height="60"/>
                                     <RowDefinition Height="35"/>
                                 </Grid.RowDefinitions>
-
-                                <TextBlock Grid.Column="0" Grid.Row="0" TextAlignment="Center" Grid.ColumnSpan="5" Text="Input" FontSize="24"/>
 
                                 <TextBlock Grid.Column="0" Grid.Row="2" Text="AH" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                                 <TextBox x:Name="AH" Grid.Column="1" Grid.Row="2" MaxLength="2" Width="35" Height="34" Margin="7" FontSize="17" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"/>
@@ -91,31 +89,35 @@
                                     <ColumnDefinition Width="60"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="30"/>
                                     <RowDefinition Height="50"/>
                                     <RowDefinition Height="50"/>
                                     <RowDefinition Height="50"/>
                                     <RowDefinition Height="50"/>
                                 </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Column="0" Grid.Row="0" Text="AH" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                                <TextBlock x:Name="AHr" Grid.Column="1" Grid.Row="0" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                <TextBlock Grid.Column="3" Grid.Row="0" Text="AL" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                                <TextBlock x:Name="ALr" Grid.Column="4" Grid.Row="0" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="0" Grid.Row="0" TextAlignment="Center" Grid.ColumnSpan="5" Text="REGISTER" FontSize="19"/>
 
-                                <TextBlock Grid.Column="0" Grid.Row="1" Text="BH" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                                <TextBlock x:Name="BHr" Grid.Column="1" Grid.Row="1" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                <TextBlock Grid.Column="3" Grid.Row="1" Text="BL" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                                <TextBlock x:Name="BLr" Grid.Column="4" Grid.Row="1" Text="00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="0" Grid.Row="2" Text="AH" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="AHr" Grid.Column="1" Grid.Row="2" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="3" Grid.Row="2" Text="AL" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="ALr" Grid.Column="4" Grid.Row="2" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-                                <TextBlock Grid.Column="0" Grid.Row="2" Text="CH" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                                <TextBlock x:Name="CHr" Grid.Column="1" Grid.Row="2" Text="00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                <TextBlock Grid.Column="3" Grid.Row="2" Text="CL" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                                <TextBlock x:Name="CLr" Grid.Column="4" Grid.Row="2" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="0" Grid.Row="3" Text="BH" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="BHr" Grid.Column="1" Grid.Row="3" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="3" Grid.Row="3" Text="BL" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="BLr" Grid.Column="4" Grid.Row="3" Text="00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-                                <TextBlock Grid.Column="0" Grid.Row="3" Text="DH" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                                <TextBlock x:Name="DHr" Grid.Column="1" Grid.Row="3" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                <TextBlock Grid.Column="3" Grid.Row="3" Text="AL" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                                <TextBlock x:Name="DLr" Grid.Column="4" Grid.Row="3" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="0" Grid.Row="4" Text="CH" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="CHr" Grid.Column="1" Grid.Row="4" Text="00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="3" Grid.Row="4" Text="CL" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="CLr" Grid.Column="4" Grid.Row="4" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                <TextBlock Grid.Column="0" Grid.Row="5" Text="DH" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="DHr" Grid.Column="1" Grid.Row="5" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="3" Grid.Row="5" Text="AL" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="DLr" Grid.Column="4" Grid.Row="5" FontSize="18" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Grid>
                         </StackPanel>
 
